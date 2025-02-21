@@ -122,7 +122,6 @@ async function ellisIslandChoice(choice) {
 
     console.log("Selected Choice:", selectedChoice);
 
-    let imageUrl = selectedChoice["Photo Link (Direct Image)"]; // Now using GitHub URLs
 
 
     console.log("Image URL:", imageUrl);
