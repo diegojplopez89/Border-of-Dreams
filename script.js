@@ -123,11 +123,8 @@ async function ellisIslandChoice(choice) {
 
     console.log("Selected Choice:", selectedChoice);
 
-    // ✅ Convert Google Drive link if needed
-    let rawImageUrl = selectedChoice["Photo Link (Direct Image)"];
-    let imageUrl = rawImageUrl.includes("drive.google.com") 
-        ? rawImageUrl.replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=view&id=").split("/view")[0]
-        : rawImageUrl;
+    let imageUrl = selectedChoice["Photo Link (Direct Image)"]; // Now using GitHub URLs
+
 
     console.log("Image URL:", imageUrl);
 
