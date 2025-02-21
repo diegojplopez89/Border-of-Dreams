@@ -10,3 +10,25 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+
+#player-setup {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input, select, button {
+    margin: 5px;
+    padding: 10px;
+}
+
+#stats {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid #333;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f4f4f4;
+}

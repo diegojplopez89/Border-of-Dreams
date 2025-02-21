@@ -8,14 +8,42 @@
 </head>
 <body>
     <h1>Welcome to Border of Dreams</h1>
-    <p id="story-text">You are about to begin your journey. Choose your era of migration:</p>
-    
-    <button onclick="startGame('1890s')">1890s - Ellis Island</button>
-    <button onclick="startGame('1980s')">1980s - Latin America</button>
-    <button onclick="startGame('Present')">Present Day - Modern Migration</button>
-    
-    <div id="buttons-container"></div> <!-- This is where new choices will appear -->
+    <p id="story-text">You are about to begin your journey. Enter your name and choose your era of migration:</p>
 
-    <script src="script.js"></script>
+    <!-- Player Setup -->
+    <div id="player-setup">
+        <input type="text" id="player-name" placeholder="Enter your name">
+        <p>Select your gender:</p>
+        <select id="player-gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="trans">Trans</option>
+            <option value="nonbinary">Nonbinary</option>
+        </select>
+        <br>
+        <button onclick="setPlayerDetails()">Start Journey</button>
+    </div>
+
+    <!-- Era Selection -->
+    <div id="era-selection" style="display: none;">
+        <p>Choose your era of migration:</p>
+        <button onclick="startGame('1890s')">1890s - Ellis Island</button>
+        <button onclick="startGame('1980s')">1980s - Latin America</button>
+        <button onclick="startGame('Present')">Present Day - Modern Migration</button>
+    </div>
+
+    <!-- Game Interface -->
+    <div id="buttons-container"></div> <!-- Where choices appear -->
+    <div id="stats"></div> <!-- Stats Display -->
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="audio/game-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <button onclick="toggleMusic()">🎵 Toggle Music</button>
+
+    <!-- Link JavaScript (defer ensures it loads after HTML) -->
+    <script src="script.js" defer></script>
 </body>
 </html>
