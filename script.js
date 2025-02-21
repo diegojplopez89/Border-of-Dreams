@@ -149,6 +149,14 @@ async function ellisIslandChoice(choice) {
     updateStatsDisplay();
     checkGameOver();
 }
+function nextStep() {
+    document.getElementById("story-text").innerHTML = "What do you want to do next?";
+    document.getElementById("buttons-container").innerHTML = `
+        <button onclick="ellisIslandChoice('Take factory job')">Take Factory Job</button>
+        <button onclick="ellisIslandChoice('Rent apartment')">Find Housing</button>
+        <button onclick="ellisIslandChoice('Assimilate quickly')">Try to Assimilate</button>
+    `;
+}
 
 // ✅ Make function accessible globally
 window.ellisIslandChoice = ellisIslandChoice;
