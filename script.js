@@ -126,9 +126,19 @@ async function ellisIslandChoice(choice) {
 
     console.log("Image URL:", imageUrl);
 
-    let imageHTML = `<img id="event-image" src="${imageUrl}" width="400" alt="Historical Image" 
-                     onerror="this.onerror=null;this.src='https://via.placeholder.com/400';">`;
+    let selectedChoice = choices.find(c => c.Choice.trim().toLowerCase() === choice.trim().toLowerCase());
 
+    if (!selectedChoice) {
+        document.getElementById("story-text").innerHTML = `
+            <p>You hesitate, unsure of what to do. The moment passes.</p>
+            <button onclick="startGame('1890s')">Try Again</button>
+        `;
+        return;
+    }
+    
+    let imageUrl = selectedChoice["Photo Link (Direct Image)"]; // Now using GitHub links
+    console.log("Image URL:", imageUrl);
+    
     // ✅ Update the story and display image
     document.getElementById("story-text").innerHTML = `
         <p>${selectedChoice.Outcome}</p>
