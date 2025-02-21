@@ -34,9 +34,9 @@ function setPlayerDetails() {
     document.getElementById("era-selection").style.display = "block";
     document.getElementById("player-setup").style.display = "none";
 }
-function getImageUrl(imageUrl) {
-    return imageUrl; // GitHub image links are already direct
-}
+
+// ✅ Make function globally accessible
+window.setPlayerDetails = setPlayerDetails;
 
 
 // ✅ Make function accessible globally
@@ -61,7 +61,6 @@ async function fetchGameData() {
         return [];
     }
 }
-
 
 // ✅ Function to start the game based on era selection
 function startGame(era) {
@@ -110,7 +109,7 @@ async function ellisIslandChoice(choice) {
         return;
     }
 
-    let selectedChoice = choices.find(c => c.Choice.trim().toLowerCase() === choice.trim().toLowerCase());
+    selectedChoice = choices.find(c => c.Choice.trim().toLowerCase() === choice.trim().toLowerCase());
 
     if (!selectedChoice) {
         document.getElementById("story-text").innerHTML = `
@@ -122,23 +121,17 @@ async function ellisIslandChoice(choice) {
 
     console.log("Selected Choice:", selectedChoice);
 
-
-
-    console.log("Image URL:", imageUrl);
-
-    let selectedChoice = choices.find(c => c.Choice.trim().toLowerCase() === choice.trim().toLowerCase());
-
-    if (!selectedChoice) {
-        document.getElementById("story-text").innerHTML = `
-            <p>You hesitate, unsure of what to do. The moment passes.</p>
-            <button onclick="startGame('1890s')">Try Again</button>
-        `;
-        return;
+    // ✅ Get GitHub image URL
+    let imageUrl = selectedChoice["Photo Link"]; // Ensure this matches the Google Sheet column name
+    if (!imageUrl) {
+        imageUrl = "https://via.placeholder.com/400"; // Fallback image
     }
-    
-    let imageUrl = selectedChoice["Photo Link (Direct Image)"]; // Now using GitHub links
+
     console.log("Image URL:", imageUrl);
-    
+
+    let imageHTML = `<img id="event-image" src="${imageUrl}" width="400" alt="Historical Image"
+                     onerror="this.onerror=null;this.src='https://via.placeholder.com/400';">`;
+
     // ✅ Update the story and display image
     document.getElementById("story-text").innerHTML = `
         <p>${selectedChoice.Outcome}</p>
@@ -157,6 +150,8 @@ async function ellisIslandChoice(choice) {
     updateStatsDisplay();
     checkGameOver();
 }
+
+// ✅ Function to move to the next step
 function nextStep() {
     document.getElementById("story-text").innerHTML = "What do you want to do next?";
     document.getElementById("buttons-container").innerHTML = `
@@ -165,9 +160,6 @@ function nextStep() {
         <button onclick="ellisIslandChoice('Assimilate quickly')">Try to Assimilate</button>
     `;
 }
-
-// ✅ Make function accessible globally
-window.ellisIslandChoice = ellisIslandChoice;
 
 // ✅ Function to update stats display
 function updateStatsDisplay() {
@@ -215,6 +207,7 @@ function restartGame() {
     updateStatsDisplay();
 }
 
+// ✅ Function to toggle music
 function toggleMusic() {
     let music = document.getElementById("bg-music");
     if (music.paused) {
@@ -224,10 +217,8 @@ function toggleMusic() {
     }
 }
 
-// ✅ Make function globally accessible
+// ✅ Make functions globally accessible
 window.toggleMusic = toggleMusic;
-
-
-// ✅ Make function accessible globally
 window.restartGame = restartGame;
+window.ellisIslandChoice = ellisIslandChoice;
 window.nextStep = nextStep;
