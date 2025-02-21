@@ -35,9 +35,8 @@ function setPlayerDetails() {
     document.getElementById("player-setup").style.display = "none";
 }
 function getImageUrl(imageUrl) {
-    return imageUrl; // No need for conversion, GitHub images are already direct links
+    return imageUrl; // GitHub image links are already direct
 }
-let imageUrl = getImageUrl(selectedChoice["Photo Link (Direct Image)"]);
 
 
 // ✅ Make function accessible globally
@@ -222,3 +221,4 @@ window.toggleMusic = toggleMusic;
 
 // ✅ Make function accessible globally
 window.restartGame = restartGame;
+window.nextStep = nextStep;
