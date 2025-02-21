@@ -38,8 +38,6 @@ function setPlayerDetails() {
 // ✅ Make function globally accessible
 window.setPlayerDetails = setPlayerDetails;
 
-
-
 // ✅ Function to fetch game data from Google Apps Script
 async function fetchGameData() {
     console.log("Fetching game data...");
@@ -120,11 +118,7 @@ async function ellisIslandChoice(choice) {
     console.log("Selected Choice:", selectedChoice);
 
     // ✅ Get GitHub image URL
-    let imageUrl = selectedChoice["Photo Link"];
-    if (!imageUrl) {
-        imageUrl = "https://via.placeholder.com/400"; // Fallback image
-    }
-    
+    let imageUrl = selectedChoice["Photo Link"] || "https://via.placeholder.com/400";
 
     console.log("Image URL:", imageUrl);
 
@@ -158,35 +152,6 @@ function nextStep() {
         <button onclick="ellisIslandChoice('Rent apartment')">Find Housing</button>
         <button onclick="ellisIslandChoice('Assimilate quickly')">Try to Assimilate</button>
     `;
-}
-
-// ✅ Function to update stats display
-function updateStatsDisplay() {
-    document.getElementById("stats").innerHTML = 
-        `<strong>❤️ Health:</strong> ${playerStats.health} | 
-         <strong>💰 Money:</strong> $${playerStats.money} | 
-         <strong>💪 Resilience:</strong> ${playerStats.resilience} | 
-         <strong>🤝 Community:</strong> ${playerStats.community}`;
-}
-
-// ✅ Function to check game over conditions
-function checkGameOver() {
-    let storyText = document.getElementById("story-text");
-    let buttonsContainer = document.getElementById("buttons-container");
-
-    if (playerStats.health <= 0) {
-        storyText.innerHTML = `${playerName}, your body couldn't handle the hardships. Your journey has ended.`;
-        buttonsContainer.innerHTML = `<button onclick="restartGame()">Restart Journey</button>`;
-        return true;
-    }
-
-    if (playerStats.resilience <= 0) {
-        storyText.innerHTML = `${playerName}, the struggles have broken your spirit. You have lost the will to continue.`;
-        buttonsContainer.innerHTML = `<button onclick="restartGame()">Restart Journey</button>`;
-        return true;
-    }
-
-    return false;
 }
 
 // ✅ Function to restart the game
