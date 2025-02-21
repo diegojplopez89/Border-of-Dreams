@@ -105,7 +105,7 @@ async function ellisIslandChoice(choice) {
         return;
     }
 
-    let selectedChoice = choices.find(c => c.Choice.trim().toLowerCase() === choice.trim().toLowerCase());
+    let selectedChoice = choices.find(c => c.Choice.trim().toLowerCase());
 
     if (!selectedChoice) {
         document.getElementById("story-text").innerHTML = `
