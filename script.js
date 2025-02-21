@@ -34,6 +34,9 @@ function setPlayerDetails() {
     document.getElementById("era-selection").style.display = "block";
     document.getElementById("player-setup").style.display = "none";
 }
+function convertDriveLink(driveUrl) {
+    return driveUrl.replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=view&id=").split("/view")[0];
+}
 
 // ✅ Make function accessible globally
 window.setPlayerDetails = setPlayerDetails;
@@ -41,7 +44,6 @@ window.setPlayerDetails = setPlayerDetails;
 // ✅ Function to fetch game data from Google Apps Script
 async function fetchGameData() {
     console.log("Fetching game data...");
-
     try {
         let response = await fetch(WEB_APP_URL, { method: "GET" });
 
@@ -54,10 +56,11 @@ async function fetchGameData() {
         return data;
     } catch (error) {
         console.error("Error fetching game data:", error);
-        alert("Failed to load game data. Please check your internet connection or API deployment.");
+        alert("Failed to load game data. Check your internet connection or API settings.");
         return [];
     }
 }
+
 
 // ✅ Function to start the game based on era selection
 function startGame(era) {
