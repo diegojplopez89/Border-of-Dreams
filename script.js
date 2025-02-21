@@ -34,9 +34,11 @@ function setPlayerDetails() {
     document.getElementById("era-selection").style.display = "block";
     document.getElementById("player-setup").style.display = "none";
 }
-function convertDriveLink(driveUrl) {
-    return driveUrl.replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=view&id=").split("/view")[0];
+function getImageUrl(imageUrl) {
+    return imageUrl; // No need for conversion, GitHub images are already direct links
 }
+let imageUrl = getImageUrl(selectedChoice["Photo Link (Direct Image)"]);
+
 
 // ✅ Make function accessible globally
 window.setPlayerDetails = setPlayerDetails;
