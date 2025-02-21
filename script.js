@@ -1,5 +1,5 @@
 // ✅ Define Google Apps Script Web App URL (Update with your correct URL)
-const WEB_APP_URL = "https://script.google.com/a/macros/khaid.org/s/AKfycbyN2uUzSeZPwA_yjQg9RyfgOsxqjFIUi_egsnCEO-b24DK1JUVSRH1Vm0cHyR4E2tG1/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyN2uUzSeZPwA_yjQg9RyfgOsxqjFIUi_egsnCEO-b24DK1JUVSRH1Vm0cHyR4E2tG1/exec";
 
 // ✅ Global player data
 let playerName = "";
