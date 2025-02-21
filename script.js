@@ -39,8 +39,6 @@ function setPlayerDetails() {
 window.setPlayerDetails = setPlayerDetails;
 
 
-// ✅ Make function accessible globally
-window.setPlayerDetails = setPlayerDetails;
 
 // ✅ Function to fetch game data from Google Apps Script
 async function fetchGameData() {
@@ -109,7 +107,7 @@ async function ellisIslandChoice(choice) {
         return;
     }
 
-    selectedChoice = choices.find(c => c.Choice.trim().toLowerCase() === choice.trim().toLowerCase());
+    let selectedChoice = choices.find(c => c.Choice.trim().toLowerCase() === choice.trim().toLowerCase());
 
     if (!selectedChoice) {
         document.getElementById("story-text").innerHTML = `
@@ -122,10 +120,11 @@ async function ellisIslandChoice(choice) {
     console.log("Selected Choice:", selectedChoice);
 
     // ✅ Get GitHub image URL
-    let imageUrl = selectedChoice["Photo Link"]; // Ensure this matches the Google Sheet column name
+    let imageUrl = selectedChoice["Photo Link"];
     if (!imageUrl) {
         imageUrl = "https://via.placeholder.com/400"; // Fallback image
     }
+    
 
     console.log("Image URL:", imageUrl);
 
