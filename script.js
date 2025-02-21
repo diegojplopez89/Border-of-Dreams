@@ -144,6 +144,19 @@ async function ellisIslandChoice(choice) {
     checkGameOver();
 }
 
+// ✅ Function to update stats display
+function updateStatsDisplay() {
+    document.getElementById("stats").innerHTML = 
+        `<strong>❤️ Health:</strong> ${playerStats.health} | 
+         <strong>💰 Money:</strong> $${playerStats.money} | 
+         <strong>💪 Resilience:</strong> ${playerStats.resilience} | 
+         <strong>🤝 Community:</strong> ${playerStats.community}`;
+}
+
+// ✅ Make sure it's globally accessible
+window.updateStatsDisplay = updateStatsDisplay;
+
+
 // ✅ Function to move to the next step
 function nextStep() {
     document.getElementById("story-text").innerHTML = "What do you want to do next?";
